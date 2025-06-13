@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjx7a354yayvg"]
+
+[ext_resource type="Texture2D" uid="uid://43vlbuwekjei" path="res://assets/sprites/purple_background.png" id="1_vmml1"]
+[ext_resource type="PackedScene" uid="uid://bmvhdg0en5jkb" path="res://scenes/paddle/paddle.tscn" id="2_hi1fr"]
+[ext_resource type="PackedScene" uid="uid://dquk28ttg46kk" path="res://scenes/ball/ball.tscn" id="3_hgvft"]
+[ext_resource type="PackedScene" uid="uid://b3gnynlf2c6f7" path="res://scenes/block/block.tscn" id="4_6xkbu"]
+[ext_resource type="PackedScene" uid="uid://m81k040ksiqh" path="res://scenes/game_manager/game_manager.tscn" id="5_pu6hc"]
+
+[node name="Stage1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(400, 300)
+texture = ExtResource("1_vmml1")
+
+[node name="Paddle" parent="." instance=ExtResource("2_hi1fr")]
+
+[node name="Ball" parent="." instance=ExtResource("3_hgvft")]
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(150, 100)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block2" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(650, 100)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block3" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(400, 100)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block4" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(150, 200)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block5" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(400, 200)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block6" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(650, 200)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block7" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(150, 300)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block8" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(400, 300)
+game_manager = NodePath("../../GameManager")
+
+[node name="Block9" parent="Blocks" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_6xkbu")]
+position = Vector2(650, 300)
+game_manager = NodePath("../../GameManager")
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("blocks") instance=ExtResource("5_pu6hc")]
+next_stage = "res://scenes/stages/stage_2/stage_2.tscn"
+blocks = NodePath("../Blocks")
